@@ -1,0 +1,70 @@
+@font-face {
+    src: url("./font/Universal\ Serif.ttf") format("truetype");
+    font-family: "universal";
+  }
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc5b9;
+}
+
+#jeu {
+    min-width: 400px;
+    max-width: 900px;
+    min-height: 100px;
+    background-color: #76726B;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo {
+    color: #FAF9F9;
+    font-family: universal;
+    font-size: 52px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 4%;
+}
+
+.titre-chapitre {
+    color: #FAF9F9;
+    font-family: helvetica;
+}
+
+.paragraphe {
+    color: #FAF9F9;
+    font-family: helvetica;
+    margin: 2% 10%;
+}
+
+.boutons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    background-color: #90e0ef;
+    color: #5C5242;
+    border-radius: 20px;
+    font-family: helvetica;
+    margin: 4% 10%;
+    padding: 10px 30px;
+
+}
+
+button:hover {
+    color: #221B1B;
+    background-color: #48cae4;
+}
+
+img {
+    width: 80%;
+    overflow: hidden;
+}
