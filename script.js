@@ -4,7 +4,7 @@ let chapters = {
         description: "En après-midi, tu décides d'aller faire un tour d'hélicoptère avec ton ami qui vient de terminer sa formation en tant que pilote privé. Vous vous êtes promené au-dessus de la mer et vous avez parcouru une bonne distance. Votre ami remarque donc qu'il vous reste 6,5 gallons d'essence. Étant assez loin des berges, vous ne savez pas qu'elle est la meilleure décision à prendre.", 
         image: "./assets/image/helicoptere.jpg",
         boutons: [
-            {titre: 'Atterissage sur un banc de sable', destination: 'atterrissage'},
+            {titre: 'Atterrissage sur un banc de sable', destination: 'atterrissage'},
             {titre: 'Continuer d\'avancer vers la rive la plus proche', destination: 'rive'}
         ]
     },
