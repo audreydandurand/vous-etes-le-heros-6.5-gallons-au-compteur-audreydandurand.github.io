@@ -80,7 +80,9 @@ let chapters = {
 
 function goToChapter(cle){
     var chapitre = chapters[cle];
+    let t = document.querySelector('.titre-chapitre');
     if(chapitre !== undefined) {
+        t.innerHTML = 'ASFD';
         console.log(chapitre.titre);
         console.log(chapitre.description);
         for (let element of chapitre.boutons){
