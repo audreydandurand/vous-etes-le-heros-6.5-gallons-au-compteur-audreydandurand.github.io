@@ -80,9 +80,33 @@ let chapters = {
 
 function goToChapter(cle){
     var chapitre = chapters[cle];
-    let t = document.querySelector('.titre-chapitre');
+    let titreChapitre = document.querySelector('.titre-chapitre');
+    let paragrapheChapitre = document.querySelector('.paragraphe');
+    let imageChapitre = document.querySelector('.image');
+    let boutons = document.querySelector('.boutons');
+    let twist = false;
+
     if(chapitre !== undefined) {
-        t.innerHTML = chapitre.titre;
+        //Code pour l'affichage web
+        titreChapitre.innerHTML = chapitre.titre;
+        paragrapheChapitre.innerHTML = chapitre.description;
+        imageChapitre.src = chapitre.image;
+        while (boutons.firstChild) {
+            boutons.removeChild(boutons.firstChild);
+        }    
+        for (let i = 0; i < chapitre.boutons.length; i++) {
+            const nouveauBtn = document.createElement('button');
+            nouveauBtn.textContent = chapitre.boutons[i].titre;
+            nouveauBtn.addEventListener('click', () => {
+                goToChapter(chapitre.boutons[i].destination)
+            });
+            boutons.appendChild(nouveauBtn);
+        };
+        if(chapitre === 'rame') {
+            twist = true;
+            console.log('rame')
+        }
+        //Code pour l'affichage dans la console
         console.log(chapitre.titre);
         console.log(chapitre.description);
         for (let element of chapitre.boutons){
