@@ -46,7 +46,8 @@ body {
 .boutons {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
+    margin: 3% 0%;
 }
 
 button {
@@ -54,9 +55,9 @@ button {
     color: #5C5242;
     border-radius: 20px;
     font-family: helvetica;
-    margin: 4% 10%;
-    padding: 10px 30px;
-
+    width: 20%;
+    height: 50px;
+    margin: 0 auto;
 }
 
 button:hover {
