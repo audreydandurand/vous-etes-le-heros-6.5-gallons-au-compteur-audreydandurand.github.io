@@ -1,4 +1,4 @@
-let chapters = {
+const chapters = {
     debut : {
         titre: "Aventure de rêve",
         description: "En après-midi, tu décides d'aller faire un tour d'hélicoptère avec ton ami qui vient de terminer sa formation en tant que pilote privé. Vous vous êtes promené au-dessus de la mer et vous avez parcouru une bonne distance. Votre ami remarque donc qu'il vous reste 6,5 gallons d'essence. Étant assez loin des berges, vous ne savez pas qu'elle est la meilleure décision à prendre.",
@@ -79,18 +79,21 @@ let chapters = {
 }
 
 function goToChapter(cle){
-    var chapitre = chapters[cle];
+
+    //Déclaration des variables
+    const chapitre = chapters[cle];
     let titreChapitre = document.querySelector('.titre-chapitre');
     let paragrapheChapitre = document.querySelector('.paragraphe');
     let imageChapitre = document.querySelector('.image');
     let boutons = document.querySelector('.boutons');
     let twist = false;
 
-    if(chapitre !== undefined) {
+    if(typeof cle === 'string' && cle in chapters) {
         //Code pour l'affichage web
         titreChapitre.innerHTML = chapitre.titre;
         paragrapheChapitre.innerHTML = chapitre.description;
         imageChapitre.src = chapitre.image;
+
         while (boutons.firstChild) {
             boutons.removeChild(boutons.firstChild);
         }    
@@ -102,10 +105,37 @@ function goToChapter(cle){
             });
             boutons.appendChild(nouveauBtn);
         };
-        if(chapitre === 'rame') {
-            twist = true;
-            console.log('rame')
+
+        if(chapitre == 'debut') {
+            twist = false;
+            console.log('La twist est inactive au début de l\'histoire.')
         }
+
+        if(chapitre == 'rame') {
+            twist = true;
+            console.log('La twist est active à partir de ce chapitre.');
+        }
+
+        if(twist == false){
+            chapters.bateau = {
+                titre: "Le bateau de sauvetage ",
+                description: "Après avoir atterri sur le banc de sable, vous commencez à chercher avec votre ami le bateau de sauvetage rangé dans l'hélicoptère. Dès que vous le trouvez, vous embarquez tous les deux dans le bateau prêt à regagner la rive. Vous vous éloignez assez rapidement du banc de sable à cause de la marée. Vous demandez à votre ami de vous donner une rame pour pagayer vers la rive.",
+                image: "./assets/image/bateau_sauvetage.jpg",
+                boutons: [
+                    {titre: 'N\'a pas les rames en sa possession', destination: 'derive'}
+                ]
+            };
+        } else {
+            chapters.bateau = {
+                titre: "Le bateau de sauvetage ",
+                description: "Après avoir atterri sur le banc de sable, vous commencez à chercher avec votre ami le bateau de sauvetage rangé dans l'hélicoptère. Dès que vous le trouvez, vous embarquez tous les deux dans le bateau prêt à regagner la rive. Vous vous éloignez assez rapidement du banc de sable à cause de la marée. Vous demandez à votre ami de vous donner une rame pour pagayer vers la rive.",
+                image: "./assets/image/bateau_sauvetage.jpg",
+                boutons: [
+                    {titre: 'Avoir les rames en sa possession', destination: 'helicoptere'}
+                ]
+            };
+        }
+
         //Code pour l'affichage dans la console
         console.log(chapitre.titre);
         console.log(chapitre.description);
