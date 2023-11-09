@@ -3,6 +3,7 @@ const chapters = {
         titre: "Aventure de rêve",
         description: "En après-midi, tu décides d'aller faire un tour d'hélicoptère avec ton ami qui vient de terminer sa formation en tant que pilote privé. Vous vous êtes promené au-dessus de la mer et vous avez parcouru une bonne distance. Votre ami remarque donc qu'il vous reste 6,5 gallons d'essence. Étant assez loin des berges, vous ne savez pas qu'elle est la meilleure décision à prendre.",
         image: "./assets/image/helicoptere.jpg",
+        video: "./assets/video/helicoptere.mp4",
         boutons: [
             { titre: 'Atterrissage sur un banc de sable', destination: 'atterrissage' },
             { titre: 'Continuer d\'avancer vers la rive la plus proche', destination: 'rive' },
@@ -72,6 +73,7 @@ const chapters = {
         titre: "Les rescousses sont arrivées",
         description: " Vous voyez lentement arriver dans le ciel un hélicoptère. Il se dirige vers vous et vous lui faites signent. Les secours sont enfin arrivé et ils vous remontent dans l'hélicoptère de la garde côtière. Vous êtes maintenant à bord et sain et sauf. Vous regardez le pilote vous ramener sur la terre ferme lorsqu'une alarme sonne sur le cadran de bord. Vous vous réveillez soudainement dans votre chambre. ",
         image: "./assets/image/secours.jpg",
+        video: "./assets/video/helicoptere_sauvetage.mp4",
         boutons: [
             { titre: 'Retour au début', destination: 'debut' },
         ],
