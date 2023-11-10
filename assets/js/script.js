@@ -87,6 +87,7 @@ function goToChapter(cle) {
     let paragrapheChapitre = document.querySelector('.paragraphe');
     let imageChapitre = document.querySelector('.image');
     let videoChapitre = document.querySelector('.video');
+    let audioChapitre = document.querySelector('.audio');
     let boutons = document.querySelector('.boutons');
     let twist = false;
 
@@ -150,6 +151,13 @@ function goToChapter(cle) {
             videoChapitre.style.display = 'none';
             imageChapitre.style.display = 'inline-block';
             videoChapitre.pause();
+        }
+
+        boutons.addEventListener('click', clickBouton())
+        function clickBouton() {
+            audioChapitre.play();
+            audioChapitre.currentTime = 0;
+            console.log('audio')
         }
 
         //Code pour l'affichage dans la console
