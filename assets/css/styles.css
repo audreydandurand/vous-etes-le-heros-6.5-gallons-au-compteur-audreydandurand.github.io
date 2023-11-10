@@ -69,3 +69,8 @@ img {
     width: 80%;
     overflow: hidden;
 }
+
+video {
+    width: 80%;
+    margin: 10%;
+}
