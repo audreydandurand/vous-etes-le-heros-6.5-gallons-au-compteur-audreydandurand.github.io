@@ -2,7 +2,6 @@ const chapters = {
     debut: {
         titre: "Aventure de rêve",
         description: "En après-midi, tu décides d'aller faire un tour d'hélicoptère avec ton ami qui vient de terminer sa formation en tant que pilote privé. Vous vous êtes promené au-dessus de la mer et vous avez parcouru une bonne distance. Votre ami remarque donc qu'il vous reste 6,5 gallons d'essence. Étant assez loin des berges, vous ne savez pas qu'elle est la meilleure décision à prendre.",
-        //image: "./assets/image/helicoptere.jpg",
         video: "./assets/video/helicoptere.mp4",
         boutons: [
             { titre: 'Atterrissage sur un banc de sable', destination: 'atterrissage' },
@@ -22,7 +21,7 @@ const chapters = {
     },
 
     rive: {
-        titre: "Vous vous écraser",
+        titre: "Vous vous écrasez",
         description: "Croyant vous rendre à la rive, vous avez dépensé tout votre carburant sans pouvoir atterrir sain et sauf. Vous vous êtes écrasé en plein milieu de la mer et vous n'avez pas survécu.",
         image: "./assets/image/rive.jpg",
         boutons: [
@@ -72,7 +71,6 @@ const chapters = {
     helicoptere: {
         titre: "Les rescousses sont arrivées",
         description: " Vous voyez lentement arriver dans le ciel un hélicoptère. Il se dirige vers vous et vous lui faites signent. Les secours sont enfin arrivé et ils vous remontent dans l'hélicoptère de la garde côtière. Vous êtes maintenant à bord et sain et sauf. Vous regardez le pilote vous ramener sur la terre ferme lorsqu'une alarme sonne sur le cadran de bord. Vous vous réveillez soudainement dans votre chambre. ",
-        //image: "./assets/image/secours.jpg",
         video: "./assets/video/helicoptere_sauvetage.mp4",
         boutons: [
             { titre: 'Retour au début', destination: 'debut' },
@@ -81,8 +79,9 @@ const chapters = {
 };
 
 function goToChapter(cle) {
-    const chapitre = chapters[cle];
 
+    //Déclaration des variables
+    const chapitre = chapters[cle];
     let titreChapitre = document.querySelector('.titre-chapitre');
     let paragrapheChapitre = document.querySelector('.paragraphe');
     let imageChapitre = document.querySelector('.image');
@@ -97,6 +96,7 @@ function goToChapter(cle) {
         paragrapheChapitre.innerHTML = chapitre.description;
         imageChapitre.src = chapitre.image;
 
+        //Affichage des boutons
         while (boutons.firstChild) {
             boutons.removeChild(boutons.firstChild);
         }
@@ -109,6 +109,7 @@ function goToChapter(cle) {
             boutons.appendChild(nouveauBtn);
         };
 
+        //La twist
         if (chapitre === chapters.debut) {
             twist = false;
             console.log('La twist est inactive au début de l\'histoire.')
@@ -139,6 +140,7 @@ function goToChapter(cle) {
             };
         }
 
+        //Extraits vidéo
         if (chapitre.video) {
             videoChapitre.style.display = 'block';
             imageChapitre.style.display = 'none';
@@ -153,6 +155,7 @@ function goToChapter(cle) {
             videoChapitre.pause();
         }
 
+        //Audio déclenché à chaque changements de chapitre
         boutons.addEventListener('click', clickBouton())
         function clickBouton() {
             audioChapitre.play();
