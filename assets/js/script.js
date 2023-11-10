@@ -139,14 +139,16 @@ function goToChapter(cle) {
         }
 
         if (chapitre.video) {
-            videoChapitre.style.display = 'block'
+            videoChapitre.style.display = 'block';
+            imageChapitre.style.display = 'none';
             videoChapitre.src = chapitre.video;
             videoChapitre.currentTime = 11;
             videoChapitre.duration = 1;
             videoChapitre.play();
             console.log('video')
         } else {
-            videoChapitre.style.display = 'none'
+            videoChapitre.style.display = 'none';
+            imageChapitre.style.display = 'inline-block';
             videoChapitre.pause();
         }
 
