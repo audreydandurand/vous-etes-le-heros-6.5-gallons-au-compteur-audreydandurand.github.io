@@ -1,4 +1,13 @@
 const chapters = {
+    commencer: {
+        titre: "Commencer le jeu",
+        description: " ",
+        image: './assets/image/helicoptere.jpg',
+        boutons: [
+            { titre: 'Commencer', destination: 'debut' },
+        ],
+    },
+
     debut: {
         titre: "Aventure de rêve",
         description: "En après-midi, tu décides d'aller faire un tour d'hélicoptère avec ton ami qui vient de terminer sa formation en tant que pilote privé. Vous vous êtes promené au-dessus de la mer et vous avez parcouru une bonne distance. Votre ami remarque donc qu'il vous reste 6,5 gallons d'essence. Étant assez loin des berges, vous ne savez pas qu'elle est la meilleure décision à prendre.",
@@ -25,7 +34,7 @@ const chapters = {
         description: "Croyant vous rendre à la rive, vous avez dépensé tout votre carburant sans pouvoir atterrir sain et sauf. Vous vous êtes écrasé en plein milieu de la mer et vous n'avez pas survécu.",
         image: "./assets/image/rive.jpg",
         boutons: [
-            { titre: 'Retour au début', destination: 'debut' },
+            { titre: 'Retour au début', destination: 'commencer' },
         ],
     },
 
@@ -63,7 +72,7 @@ const chapters = {
         description: " Vous réalisez que vous n'avez aucune rame dans le bateau de sauvetage. Vous avez déjà beaucoup dérivé du banc de sable lorsque vous le réalisez. Vous remarquez aussi que le bateau se dégonfle assez vite et qu'il a donc été percé. Les secours ne seront pas arrivés à temps pour vous sauver. ",
         image: "./assets/image/derive.jpg",
         boutons: [
-            { titre: 'Retour au début', destination: 'debut' },
+            { titre: 'Retour au début', destination: 'commencer' },
         ],
     },
 
@@ -73,28 +82,30 @@ const chapters = {
         description: " Vous voyez lentement arriver dans le ciel un hélicoptère. Il se dirige vers vous et vous lui faites signent. Les secours sont enfin arrivé et ils vous remontent dans l'hélicoptère de la garde côtière. Vous êtes maintenant à bord et sain et sauf. Vous regardez le pilote vous ramener sur la terre ferme lorsqu'une alarme sonne sur le cadran de bord. Vous vous réveillez soudainement dans votre chambre. ",
         video: "./assets/video/helicoptere_sauvetage.mp4",
         boutons: [
-            { titre: 'Retour au début', destination: 'debut' },
+            { titre: 'Retour au début', destination: 'commencer' },
         ],
     },
 };
+
+let titreChapitre = document.querySelector('.titre-chapitre');
+let paragrapheChapitre = document.querySelector('.paragraphe');
+let imageChapitre = document.querySelector('.image');
+let videoChapitre = document.querySelector('.video');
+let audioChapitre = document.querySelector('.audio');
+let boutons = document.querySelector('.boutons');
 
 function goToChapter(cle) {
 
     //Déclaration des variables
     const chapitre = chapters[cle];
-    let titreChapitre = document.querySelector('.titre-chapitre');
-    let paragrapheChapitre = document.querySelector('.paragraphe');
-    let imageChapitre = document.querySelector('.image');
-    let videoChapitre = document.querySelector('.video');
-    let audioChapitre = document.querySelector('.audio');
-    let boutons = document.querySelector('.boutons');
+
     let twist = false;
 
     if (typeof cle === 'string' && cle in chapters) {
         //Code pour l'affichage web
         titreChapitre.innerHTML = chapitre.titre;
         paragrapheChapitre.innerHTML = chapitre.description;
-        imageChapitre.src = chapitre.image;
+        
 
         //Affichage des boutons
         while (boutons.firstChild) {
@@ -110,7 +121,7 @@ function goToChapter(cle) {
         };
 
         //La twist
-        if (chapitre === chapters.debut) {
+        if (chapitre === chapters.commencer) {
             twist = false;
             console.log('La twist est inactive au début de l\'histoire.')
         }
@@ -150,18 +161,30 @@ function goToChapter(cle) {
             videoChapitre.play();
             console.log('video')
         } else {
+            imageChapitre.src = chapitre.image;
             videoChapitre.style.display = 'none';
             imageChapitre.style.display = 'inline-block';
             videoChapitre.pause();
         }
 
-        //Audio déclenché à chaque changements de chapitre
+        //Click sur les boutons
         boutons.addEventListener('click', clickBouton())
         function clickBouton() {
+            //Audio
             audioChapitre.play();
             audioChapitre.currentTime = 0;
             console.log('audio')
+            //Modification des textes de la premières pages
+            if(chapters.bateau || chapters.derive || chapters.rive) {
+                chapters.commencer.titre = 'Recommencer le jeu';
+                chapters.commencer.boutons.titre = 'Recommencer';
+                for (let element of chapters.commencer.boutons) {
+                    element.titre = 'Recommencer'
+                }
+            }
         }
+
+        localStorage.setItem('cle', cle);
 
         //Code pour l'affichage dans la console
         console.log(chapitre.titre);
@@ -174,4 +197,4 @@ Tapez goToChapter('${element.destination}')`);
         console.log('mauvaise clé du chapitre')
     }
 };
-goToChapter('debut');
+goToChapter('commencer');
