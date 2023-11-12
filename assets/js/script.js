@@ -87,6 +87,7 @@ const chapters = {
     },
 };
 
+//Déclaration des variables
 let titreChapitre = document.querySelector('.titre-chapitre');
 let paragrapheChapitre = document.querySelector('.paragraphe');
 let imageChapitre = document.querySelector('.image');
