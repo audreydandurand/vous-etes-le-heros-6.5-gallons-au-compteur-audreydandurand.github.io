@@ -94,6 +94,7 @@ let imageChapitre = document.querySelector('.image');
 let videoChapitre = document.querySelector('.video');
 let audioChapitre = document.querySelector('.audio');
 let boutons = document.querySelector('.boutons');
+let reinitialiser = document.querySelector('.reinitialiser');
 
 function goToChapter(cle) {
     
@@ -189,6 +190,7 @@ function goToChapter(cle) {
         localStorage.setItem('cle', cle);
         
 
+
         //Code pour l'affichage dans la console
         console.log(chapitre.titre);
         console.log(chapitre.description);
@@ -202,10 +204,16 @@ Tapez goToChapter('${element.destination}')`);
 };
 
 chapitreSauvegarder = localStorage.getItem('cle');
-        if(chapitreSauvegarder) {
-            console.log(chapitreSauvegarder)
-                goToChapter(chapitreSauvegarder);
-        }
-        else {
-            goToChapter('commencer');
-        }
+    if(chapitreSauvegarder) {
+        console.log(chapitreSauvegarder)
+        goToChapter(chapitreSauvegarder);
+    }
+    else {
+        goToChapter('commencer');
+    }
+
+reinitialiser.addEventListener('click', clickBoutonReinitialiser)
+function clickBoutonReinitialiser() {
+    localStorage.clear();
+    goToChapter('commencer');
+}
