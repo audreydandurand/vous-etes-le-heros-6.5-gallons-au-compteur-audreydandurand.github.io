@@ -125,11 +125,13 @@ function goToChapter(cle) {
         //La twist
         if (chapitre === chapters.commencer) {
             twist = false;
+            localStorage.setItem('twist', false); //Local storage de la twist à false
             console.log('La twist est inactive au début de l\'histoire.')
         }
 
         if (chapitre === chapters.rame) {
             twist = true;
+            localStorage.setItem('twist', true); //Local storage de la twist à true
             console.log('La twist est active à partir de ce chapitre.');
         }
 
@@ -142,6 +144,7 @@ function goToChapter(cle) {
                     { titre: 'N\'a pas les rames en sa possession', destination: 'derive' }
                 ]
             };
+            
         } else {
             chapters.bateau = {
                 titre: "Le bateau de sauvetage ",
@@ -187,9 +190,8 @@ function goToChapter(cle) {
 
         }
 
+        //Local Storage cle
         localStorage.setItem('cle', cle);
-        
-
 
         //Code pour l'affichage dans la console
         console.log(chapitre.titre);
@@ -203,6 +205,7 @@ Tapez goToChapter('${element.destination}')`);
     }
 };
 
+//Appel fonction goToChapter en fonction du local storage
 chapitreSauvegarder = localStorage.getItem('cle');
     if(chapitreSauvegarder) {
         console.log(chapitreSauvegarder)
@@ -212,6 +215,7 @@ chapitreSauvegarder = localStorage.getItem('cle');
         goToChapter('commencer');
     }
 
+//Clique sur le bouton réinitialiser
 reinitialiser.addEventListener('click', clickBoutonReinitialiser)
 function clickBoutonReinitialiser() {
     localStorage.clear();
