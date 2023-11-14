@@ -96,7 +96,7 @@ let audioChapitre = document.querySelector('.audio');
 let boutons = document.querySelector('.boutons');
 
 function goToChapter(cle) {
-
+    
     //Déclaration des variables
     const chapitre = chapters[cle];
 
@@ -182,10 +182,12 @@ function goToChapter(cle) {
                 for (let element of chapters.commencer.boutons) {
                     element.titre = 'Recommencer'
                 }
-            }
+            }        
+
         }
 
         localStorage.setItem('cle', cle);
+        
 
         //Code pour l'affichage dans la console
         console.log(chapitre.titre);
@@ -198,4 +200,12 @@ Tapez goToChapter('${element.destination}')`);
         console.log('mauvaise clé du chapitre')
     }
 };
-goToChapter('commencer');
+
+chapitreSauvegarder = localStorage.getItem('cle');
+        if(chapitreSauvegarder) {
+            console.log(chapitreSauvegarder)
+                goToChapter(chapitreSauvegarder);
+        }
+        else {
+            goToChapter('commencer');
+        }
