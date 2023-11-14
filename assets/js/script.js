@@ -97,7 +97,7 @@ let boutons = document.querySelector('.boutons');
 let reinitialiser = document.querySelector('.reinitialiser');
 
 function goToChapter(cle) {
-    
+
     //Déclaration des variables
     const chapitre = chapters[cle];
 
@@ -107,7 +107,7 @@ function goToChapter(cle) {
         //Code pour l'affichage web
         titreChapitre.innerHTML = chapitre.titre;
         paragrapheChapitre.innerHTML = chapitre.description;
-        
+
 
         //Affichage des boutons
         while (boutons.firstChild) {
@@ -144,7 +144,7 @@ function goToChapter(cle) {
                     { titre: 'N\'a pas les rames en sa possession', destination: 'derive' }
                 ]
             };
-            
+
         } else {
             chapters.bateau = {
                 titre: "Le bateau de sauvetage ",
@@ -180,13 +180,13 @@ function goToChapter(cle) {
             audioChapitre.currentTime = 0;
             console.log('audio')
             //Modification des textes de la premières pages
-            if(chapters.bateau || chapters.derive || chapters.rive) {
+            if (chapters.bateau || chapters.derive || chapters.rive) {
                 chapters.commencer.titre = 'Recommencer le jeu';
                 chapters.commencer.boutons.titre = 'Recommencer';
                 for (let element of chapters.commencer.boutons) {
                     element.titre = 'Recommencer'
                 }
-            }        
+            }
 
         }
 
@@ -207,13 +207,13 @@ Tapez goToChapter('${element.destination}')`);
 
 //Appel fonction goToChapter en fonction du local storage
 chapitreSauvegarder = localStorage.getItem('cle');
-    if(chapitreSauvegarder) {
-        console.log(chapitreSauvegarder)
-        goToChapter(chapitreSauvegarder);
-    }
-    else {
-        goToChapter('commencer');
-    }
+if (chapitreSauvegarder) {
+    console.log(chapitreSauvegarder)
+    goToChapter(chapitreSauvegarder);
+}
+else {
+    goToChapter('commencer');
+}
 
 //Clique sur le bouton réinitialiser
 reinitialiser.addEventListener('click', clickBoutonReinitialiser)
