@@ -176,13 +176,14 @@ function goToChapter(cle) {
         //Click sur les boutons
         boutons.addEventListener('click', clickBouton())
         function clickBouton() {
+            //État du volume si coché ou non
             if(checkbox.checked == false) {
             //Audio
             audioChapitre.play();
             audioChapitre.currentTime = 0;
             console.log('audio')
             }
-            else {
+            else { 
                 audioChapitre.pause();
             }
             //Modification des textes de la premières pages
@@ -193,8 +194,16 @@ function goToChapter(cle) {
                     element.titre = 'Recommencer'
                 }
             }
-
+            //LocalStorage de l'état du volume
             localStorage.setItem('mute', checkbox.checked);  
+        }
+
+        //Redimension de l'image au chapitre Radio
+        if(cle === 'radio') {
+            imageChapitre.style.width = '50%';
+        }
+        else {
+            imageChapitre.style.width = '80%';
         }
 
         //Local Storage cle
