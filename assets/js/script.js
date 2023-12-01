@@ -194,7 +194,7 @@ function goToChapter(cle) {
                 }
             }
 
-            localStorage.setItem('muted', checkbox.checked);  
+            localStorage.setItem('mute', checkbox.checked);  
         }
 
         //Local Storage cle
@@ -210,6 +210,7 @@ Tapez goToChapter('${element.destination}')`);
     } else {
         console.log('mauvaise clé du chapitre')
     }
+    
 };
 
 //Appel fonction goToChapter en fonction du local storage
