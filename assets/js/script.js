@@ -95,6 +95,7 @@ let videoChapitre = document.querySelector('.video');
 let audioChapitre = document.querySelector('.audio');
 let boutons = document.querySelector('.boutons');
 let reinitialiser = document.querySelector('.reinitialiser');
+let checkbox = document.querySelector('.checkbox');
 
 function goToChapter(cle) {
 
@@ -175,10 +176,15 @@ function goToChapter(cle) {
         //Click sur les boutons
         boutons.addEventListener('click', clickBouton())
         function clickBouton() {
+            if(checkbox.checked == false) {
             //Audio
             audioChapitre.play();
             audioChapitre.currentTime = 0;
             console.log('audio')
+            }
+            else {
+                audioChapitre.pause();
+            }
             //Modification des textes de la premières pages
             if (chapters.bateau || chapters.derive || chapters.rive) {
                 chapters.commencer.titre = 'Recommencer le jeu';
@@ -188,6 +194,7 @@ function goToChapter(cle) {
                 }
             }
 
+            localStorage.setItem('muted', checkbox.checked);  
         }
 
         //Local Storage cle
